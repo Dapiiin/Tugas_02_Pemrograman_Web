@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Recruitment Hima RPL 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: purple;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 80px auto 0;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .title {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #eee;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin: 0 5px;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* FORM LOGIN */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#">Open Recruitment Hima RPL</a>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Open Recruitment Hima RPL 2025!</h1>
+        <p class="quote">Ubur Ubur Ikan Lele, Jangan Lupa Join Lee <b>(Elgy, 2025)</b></p>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('login')">Login</div>
+            <div class="tab" onclick="openTab('register')">Registrasi</div>
+            <div class="tab" onclick="openTab('profile')">Profil Hima RPL</div>
+        </div>
+
+        <!-- Tab Login -->
+        <div id="login" class="tab-content active">
+            <h2>Login Anggota</h2>
+            <form id="loginForm" action="#" method="post" onsubmit="return validateLoginForm()">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="username" required>
+                <span id="usernameError" class="error"></span>
+
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="password" required minlength="8">
+                <span id="passwordError" class="error"></span>
+
+                <button type="submit">Login</button>
+                <p>Belum punya akun? <a href="#" onclick="openTab('register')">Daftar sekarang</a></p>
+            </form>
+        </div>
+
+        <!-- Tab Registrasi -->
+        <div id="register" class="tab-content">
+            <h2>Registrasi Anggota Baru</h2>
+            <form id="registerForm" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateRegisterForm()">
+                <label for="regUsername">Username:</label>
+                <input type="text" id="regUsername" name="username" required pattern="[A-Za-z0-9_]{5,}">
+                <span id="regUsernameError" class="error"></span>
+
+                <label for="fullName">Nama Lengkap:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Daftar Sekarang</button>
+            </form>
+        </div>
+
+        <!-- Tab Profil -->
+        <div id="profile" class="tab-content">
+            <h2>Tentang Hima RPL</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 Hima RPL. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            let tabContents = document.querySelectorAll(".tab-content");
+            let tabs = document.querySelectorAll(".tab");
+
+            tabContents.forEach(content => content.classList.remove("active"));
+            tabs.forEach(tab => tab.classList.remove("active"));
+
+            document.getElementById(tabName).classList.add("active");
+            document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
